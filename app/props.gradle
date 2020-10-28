@@ -1,0 +1,30 @@
+def readDotEnv = {
+    def envFile = "app/appConstant.properties"
+
+    def env = [:]
+    println("Reading env from: $envFile")
+    try {
+        new File("$project.rootDir/$envFile").eachLine { line ->
+            def matcher = (line =~ /^\s*(?:export\s+|)([\w\d.\-_]+)\s*=\s*['"]?(.*?)?['"]?\s*$/)
+            if (matcher.getCount() == 1 && matcher[0].size() == 3) {
+                env.put(matcher[0][1], matcher[0][2])
+            }
+        }
+    } catch (FileNotFoundException ignored) {
+        println("*** Missing digi.properties file ****")
+    }
+    project.ext.set("env", env)
+}
+
+readDotEnv()
+
+android {
+    defaultConfig {
+        project.env.each { k, v ->
+            def escaped = v.replaceAll("%", "\\\\u0025")
+            //println("**** property key **** $k *** value $v ")
+            buildConfigField "String", k, "\"$v\""
+            resValue "string", k, "\"$escaped\""
+        }
+    }
+}

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="androidx.core.content.ContextCompat" />
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.tasks.TaskItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="@{() -> rowViewModel.onClick()}">
+
+        <ImageView
+            loadResource="@{rowViewModel.iconLocation}"
+            android:id="@+id/img_location"
+            android:layout_width="@dimen/space_24"
+            android:layout_height="0dp"
+            android:visibility="@{rowViewModel.iconLocationVisibility}"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_16"
+
+            android:src="@drawable/ic_location_black"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_customer_name"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_customer_name" />
+
+        <TextView
+            android:id="@+id/tv_customer_name"
+            style="@style/BlackBold16Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@{rowViewModel.customerName}"
+            android:textColor="@{ContextCompat.getColor(context, rowViewModel.textColor)}"
+            app:layout_constraintLeft_toRightOf="@+id/img_location"
+            app:layout_constraintRight_toLeftOf="@+id/img_right"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_task_creator"
+            style="@style/Grey10Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@{rowViewModel.taskCreator}"
+            android:layout_marginRight="@dimen/space_16"
+            app:layout_constraintRight_toLeftOf="@+id/img_right"
+            app:layout_constraintLeft_toRightOf="@+id/img_location"
+            app:layout_constraintTop_toBottomOf="@+id/tv_customer_name" />
+
+        <TextView
+            android:id="@+id/tv_task_visit_time"
+            style="@style/Grey10Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@{rowViewModel.checkoutTime}"
+            android:layout_marginRight="@dimen/space_16"
+            android:visibility="@{(rowViewModel.checkoutTime.isEmpty())? View.GONE : View.VISIBLE}"
+            app:layout_constraintRight_toLeftOf="@+id/img_right"
+            app:layout_constraintLeft_toRightOf="@+id/img_location"
+            app:layout_constraintTop_toBottomOf="@+id/tv_task_creator" />
+
+        <TextView
+            android:id="@+id/tv_task_description"
+            style="@style/Grey10Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@{rowViewModel.description}"
+            android:visibility="@{(rowViewModel.description.isEmpty()) ? View.GONE : View.VISIBLE}"
+            android:layout_marginRight="@dimen/space_16"
+            tools:visibility="gone"
+            app:layout_constraintRight_toLeftOf="@+id/img_right"
+            app:layout_constraintLeft_toRightOf="@+id/img_location"
+            app:layout_constraintTop_toBottomOf="@+id/tv_task_visit_time" />
+
+        <ImageView
+            android:id="@+id/img_right"
+            android:layout_width="@dimen/space_32"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_checked"
+            android:visibility="@{rowViewModel.checkVisible}"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginRight="@dimen/space_16"
+            loadResource="@{rowViewModel.visitedStatusIcon}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_customer_name" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/Grey10Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginRight="@dimen/space_32"
+            android:layout_marginBottom="@dimen/space_8"
+            android:text="@{rowViewModel.checkoutTime}"
+            android:visibility="@{rowViewModel.timeVisibility}"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_right" />
+
+        <ImageView
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_right_arrow"
+            android:visibility="@{rowViewModel.enabled ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/img_right"
+            app:layout_constraintRight_toRightOf="@+id/img_right"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/colorGrey"
+            android:layout_marginRight="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_8"
+            app:layout_constraintTop_toBottomOf="@+id/tv_task_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/tv_customer_name"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

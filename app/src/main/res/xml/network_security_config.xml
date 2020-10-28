@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">private-1dac07-eroyal.apiary-mock.com</domain>
+        <domain includeSubdomains="true">52.74.1.159</domain>
+        <domain includeSubdomains="true">7ebfa652b03b.ngrok.io</domain>
+        <domain includeSubdomains="true">data.smartfren.com</domain>
+        <domain includeSubdomains="true">api.ras.co.id</domain>
+    </domain-config>
+</network-security-config>

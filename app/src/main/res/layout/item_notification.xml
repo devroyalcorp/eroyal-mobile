@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.notification.NotificationItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_24"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> rowViewModel.onClicked()}"
+        android:layout_marginRight="@dimen/space_24"
+        android:layout_marginBottom="@dimen/space_16">
+
+        <ImageView
+            android:id="@+id/img_notif"
+            android:layout_width="@dimen/space_24"
+            android:layout_height="@dimen/space_24"
+            android:background="@drawable/ic_notification"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/badge_notif"
+            android:layout_width="@dimen/space_8"
+            android:layout_height="@dimen/space_8"
+            android:layout_margin="@dimen/space_2"
+            android:background="@drawable/bg_circle_green"
+            android:visibility="@{rowViewModel.read ? View.INVISIBLE : View.VISIBLE }"
+            app:layout_constraintRight_toRightOf="@+id/img_notif"
+            app:layout_constraintTop_toTopOf="@+id/img_notif" />
+
+        <TextView
+            android:id="@+id/tv_notification_title"
+            style="@style/BlackBold16Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_8"
+            android:text="@{rowViewModel.title}"
+            app:layout_constraintLeft_toRightOf="@+id/img_notif"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Notifications Title" />
+
+        <TextView
+            android:id="@+id/tv_notification_content"
+            style="@style/BlackText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginRight="@dimen/space_8"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/space_4"
+            android:maxLines="3"
+            android:text="@{rowViewModel.content}"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_notification_title"
+            app:layout_constraintLeft_toRightOf="@+id/img_notif"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_notification_title"
+            tools:text="Notifications content" />
+
+        <ImageView
+            android:id="@+id/img_notification"
+            imageUrlRadius="@{rowViewModel.imgUrl}"
+            radius="@{16}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_16"
+            android:background="@drawable/bg_placeholder"
+            app:layout_constraintDimensionRatio="9:5"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_notification_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_notification_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginTop="@dimen/space_16"
+            android:background="@color/colorGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_notification" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

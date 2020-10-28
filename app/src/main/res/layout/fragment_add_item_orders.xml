@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.orders.OrdersViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_add_item_title"
+            style="@style/BlackBold16Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@string/add_item"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_jenis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_32"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_item_title"
+            errorText="@{viewModel.productTypeError}"
+            app:errorEnabled="@{viewModel.productTypeErrorEnabled}">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_jenis"
+                style="@style/BlackBold14Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_chevron_down"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/product_type"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences"
+                android:text="@{viewModel.productType}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_barang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_32"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_jenis">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_barang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/progress_product"
+                app:layout_constraintTop_toTopOf="parent"
+                errorText="@{viewModel.productError}"
+                app:errorEnabled="@{viewModel.productErrorEnabled}">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/auto_product"
+                    style="@style/BlackBold14Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/product"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_product"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                android:layout_margin="@dimen/space_12"
+                android:visibility="gone"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_jumlah"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_32"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_barang"
+            errorText="@{viewModel.productQtyError}"
+            app:errorEnabled="@{viewModel.productQtyErrorEnabled}">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/BlackBold14Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/quantity"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:text="@={viewModel.productQty}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_32"
+            android:background="@drawable/ic_cross"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="@id/til_jenis"
+            app:layout_constraintRight_toLeftOf="@+id/btn_submit_add_item"
+            app:layout_constraintTop_toBottomOf="@+id/til_jumlah" />
+
+        <ImageView
+            android:id="@+id/btn_submit_add_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_32"
+            android:background="@drawable/ic_check"
+            app:layout_constraintLeft_toRightOf="@+id/btn_cancel"
+            app:layout_constraintRight_toRightOf="@id/til_jenis"
+            app:layout_constraintTop_toBottomOf="@+id/til_jumlah" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

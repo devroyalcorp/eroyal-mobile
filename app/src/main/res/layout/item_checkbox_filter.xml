@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.report.byarea.CheckBoxFilterItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/space_8"
+        android:orientation="horizontal">
+
+        <CheckBox
+            style="@style/SwitchCompat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorGrey"
+            android:checked="@={rowViewModel.selected}"/>
+
+        <TextView
+            style="@style/Black14Text"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@{rowViewModel.name}"
+            android:layout_height="wrap_content"
+            tools:text="Jawa Barat"/>
+    </LinearLayout>
+
+</layout>

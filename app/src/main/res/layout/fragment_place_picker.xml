@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.tasks.TasksViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/map_fragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_24"
+            app:cardCornerRadius="@dimen/space_16"
+            android:layout_above="@+id/btn_pick"
+            app:cardBackgroundColor="@android:color/white">
+
+            <TextView
+                style="@style/Black14Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_16"
+                android:gravity="center_vertical"
+                android:drawableLeft="@drawable/ic_alert"
+                android:drawablePadding="@dimen/space_8"
+                android:text="@string/make_sure_customer_location_are_accurate"/>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/view"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_location" />
+
+        <Button
+            android:id="@+id/btn_pick"
+            style="@style/ButtonWhiteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/space_24"
+            android:background="@drawable/bg_button_green_rounded"
+            android:paddingLeft="@dimen/space_32"
+            android:paddingTop="@dimen/space_10"
+            android:paddingRight="@dimen/space_32"
+            android:paddingBottom="@dimen/space_10"
+            android:text="@string/confirm"
+            android:textAllCaps="false" />
+    </RelativeLayout>
+
+</layout>

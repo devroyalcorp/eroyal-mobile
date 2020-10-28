@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.report.byarea.ReportTypeItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:clickable="true"
+        android:onClick="@{() -> rowViewModel.onClick()}"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_count"
+            style="@style/BlackBold16Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:text="@{rowViewModel.count}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="20" />
+
+        <ImageView
+            android:id="@+id/img_icon"
+            loadResource="@{rowViewModel.icon}"
+            android:layout_width="@dimen/space_32"
+            android:layout_height="@dimen/space_32"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_count" />
+
+        <TextView
+            android:id="@+id/tv_label"
+            style="@style/Black14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_6"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_6"
+            android:text="@{rowViewModel.title}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_icon"
+            tools:text="Branches" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_right_arrow"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/space_8"
+            android:visibility="@{rowViewModel.clickable? View.VISIBLE : View.GONE}"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

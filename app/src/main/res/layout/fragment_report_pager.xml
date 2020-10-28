@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.report.ReportViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_month"
+            style="@style/BlackBold16Text"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_8"
+            android:drawableRight="@drawable/ic_chevron_down"
+            android:text="@{viewModel.currentMonth}"
+            android:drawablePadding="@dimen/space_8"
+            android:gravity="center_vertical"
+            android:visibility="@{viewModel.monthPickerVisibility}"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_6"
+            android:layout_marginTop="@dimen/space_8"
+            app:tabIndicatorHeight="@dimen/space_6"
+            app:tabIndicatorColor="@color/colorGreen"
+            app:tabIndicator="@drawable/bg_indicator"
+            app:tabIndicatorFullWidth="false"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_report"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="horizontal"
+            android:scrollbarSize="@dimen/space_3"/>
+
+    </LinearLayout>
+
+</layout>

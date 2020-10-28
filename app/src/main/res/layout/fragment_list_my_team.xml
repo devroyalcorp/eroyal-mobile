@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.myteam.MyTeamViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/view_toolbar" />
+
+        <TextView
+            android:id="@+id/tv_title_my_team"
+            style="@style/BlackBold16Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@string/team_member"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <TextView
+            android:id="@+id/btn_area_filter"
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_24"
+            android:drawableRight="@drawable/ic_filter"
+            android:drawablePadding="@dimen/space_8"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="@{viewModel.areaFilterTitle}"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toRightOf="@+id/btn_brand_filter"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_my_team"
+            tools:text="Jawa Barat" />
+
+        <TextView
+            android:id="@+id/btn_brand_filter"
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_24"
+            android:drawableRight="@drawable/ic_filter"
+            android:drawablePadding="@dimen/space_8"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="@{viewModel.brandFilterTitle}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btn_area_filter"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_my_team"
+            tools:text="ELITE" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_my_team"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_40"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_32"
+            android:focusable="false"
+            app:layout_constraintTop_toBottomOf="@+id/btn_area_filter"
+            android:theme="@style/AppSearchView"
+            app:closeIcon="@drawable/ic_close_red"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="@string/search" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/colorGreyLight"
+            app:layout_constraintLeft_toLeftOf="@id/sv_my_team"
+            app:layout_constraintRight_toRightOf="@id/sv_my_team"
+            app:layout_constraintTop_toBottomOf="@+id/sv_my_team"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_my_team"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_24"
+            android:visibility="@{viewModel.emptyMyTeamVisibility ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="@dimen/space_16"
+            app:layout_constraintTop_toBottomOf="@+id/sv_my_team"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_200"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_16"
+            android:gravity="center"
+            android:text="@string/no_data"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{viewModel.emptyMyTeamVisibility ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

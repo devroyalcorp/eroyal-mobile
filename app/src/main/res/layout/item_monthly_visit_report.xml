@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.report.monthlyvisitreport.MonthlyVisitReportItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/tv_customer_name"
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginLeft="@dimen/space_16"
+            android:text="@{rowViewModel.name}"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/space_16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Customer Y" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_customer_name">
+
+            <TextView
+                android:id="@+id/tv_task_count"
+                style="@style/GreenBold14Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginRight="@dimen/space_16"
+                android:text="@{rowViewModel.totalVisitRKB}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="10" />
+
+            <TextView
+                android:id="@+id/tv_total_visit_rkb_label"
+                style="@style/Black12Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_8"
+                android:text="@string/total_visit_rkb"
+                app:layout_constraintLeft_toRightOf="@+id/tv_task_count"
+                app:layout_constraintTop_toTopOf="@id/tv_task_count" />
+
+            <TextView
+                android:id="@+id/tv_other_visit"
+                style="@style/GreenBold14Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginRight="@dimen/space_16"
+                android:text="@{rowViewModel.totalFreeVisits}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_task_count"
+                tools:text="10" />
+
+            <TextView
+                android:id="@+id/tv_total_free_visit_label"
+                style="@style/Black12Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/total_free_visits"
+                android:layout_marginLeft="@dimen/space_8"
+                app:layout_constraintLeft_toRightOf="@+id/tv_other_visit"
+                app:layout_constraintTop_toTopOf="@id/tv_other_visit" />
+
+            <TextView
+                android:id="@+id/tv_failed_tasks"
+                style="@style/RedBold14Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginRight="@dimen/space_16"
+                android:text="@{rowViewModel.failedTask}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_other_visit"
+                tools:text="10" />
+
+            <TextView
+                android:id="@+id/tv_failed_tasks_label"
+                style="@style/Black12Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/failed_tasks"
+                android:layout_marginLeft="@dimen/space_8"
+                app:layout_constraintLeft_toRightOf="@+id/tv_failed_tasks"
+                app:layout_constraintTop_toTopOf="@id/tv_failed_tasks" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_left_title_visit"
+            android:layout_width="@dimen/space_70"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_count"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginLeft="@dimen/space_16"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintRight_toLeftOf="@+id/rv_sales_table"
+            app:layout_constraintLeft_toLeftOf="parent"
+            vertAdapter="@{rowViewModel.leftVisitAdapter()}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_visit_table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_count"
+            android:layout_marginTop="@dimen/space_16"
+            app:layout_constraintLeft_toRightOf="@+id/rv_left_title_sales"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/space_16"
+            gridAdapter="@{rowViewModel.visitTableAdapter()}"
+            column="@{5}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_left_title_sales"
+            android:layout_width="@dimen/space_70"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/rv_left_title_visit"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginLeft="@dimen/space_16"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintRight_toLeftOf="@+id/rv_sales_table"
+            app:layout_constraintLeft_toLeftOf="parent"
+            vertAdapter="@{rowViewModel.leftSalesAdapter()}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_sales_table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/rv_visit_table"
+            android:layout_marginTop="@dimen/space_8"
+            app:layout_constraintLeft_toRightOf="@+id/rv_left_title_sales"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/space_16"
+            gridAdapter="@{rowViewModel.salesTableAdapter()}"
+            column="@{5}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_internal_brand_table"
+            android:layout_width="wrap_content"
+            tools:layout_height="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/rv_sales_table"
+            android:layout_marginTop="@dimen/space_8"
+            app:layout_constraintLeft_toLeftOf="@id/rv_left_title_sales"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/space_16"
+            gridAdapter="@{rowViewModel.salesBrandTableAdapter()}"
+            column="@{rowViewModel.salesBrandList.size()}"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginTop="@dimen/space_16"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@+id/rv_internal_brand_table" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

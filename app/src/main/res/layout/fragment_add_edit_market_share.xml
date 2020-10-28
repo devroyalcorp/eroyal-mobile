@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.tasks.TasksViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/BlackBold16Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginRight="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_24"
+            android:text="@string/brands" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/auto_market_share_name"
+                    style="@style/BlackBold14Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/space_24"
+                    android:layout_marginRight="@dimen/space_24"
+                    android:hint="@string/market_share_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:text="@{viewModel.selectedMarketShareForEdit.name}"
+                    android:nextFocusForward="@id/et_market_share_price" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ProgressBar
+                android:id="@+id/search_market_progress"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                android:layout_margin="@dimen/space_12"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginRight="@dimen/space_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintRight_toRightOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_market_share_price"
+                style="@style/BlackBold14Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginRight="@dimen/space_24"
+                android:enabled="@{(viewModel.selectedMarketShareTemp == null)? false : true}"
+                android:gravity="center"
+                android:text="@{viewModel.selectedMarketShareForEdit.price}"
+                android:hint="@string/price"
+                android:imeOptions="actionDone"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_done"
+            style="@style/ButtonWhiteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_48"
+            android:layout_marginBottom="@dimen/space_16"
+            android:background="@drawable/bg_button_green_rounded"
+            android:paddingLeft="@dimen/space_52"
+            android:paddingTop="@dimen/space_10"
+            android:paddingRight="@dimen/space_52"
+            android:paddingBottom="@dimen/space_10"
+            android:text="@string/done"
+            android:enabled="@{viewModel.btnAddMarketShareEnabled}"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</layout>

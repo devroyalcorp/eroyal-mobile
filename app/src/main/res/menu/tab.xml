@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/home"
+        android:id="@+id/bottomNavigationHomeMenuId"
+        android:icon="@drawable/ic_home"/>
+
+    <item android:title="@string/clock_in_clock_out"
+        android:id="@+id/bottomNavigationClockMenuId"
+        android:icon="@drawable/ic_clock"/>
+
+    <item android:title="@string/tasks"
+        android:id="@+id/bottomNavigationTasksMenuId"
+        android:icon="@drawable/ic_tasks"/>
+
+    <item android:title="@string/me"
+        android:id="@+id/bottomNavigationMeMenuId"
+        android:icon="@drawable/ic_me"/>
+
+</menu>

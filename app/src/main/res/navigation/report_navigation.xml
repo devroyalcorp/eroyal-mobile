@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/report_navigation"
+    app:startDestination="@id/reportPagerFragment">
+
+    <fragment
+        android:id="@+id/reportPagerFragment"
+        android:name="com.worka.eroyal.feature.report.ReportPagerFragment"
+        android:label="ReportPagerFragment">
+        <action
+            android:id="@+id/action_reportPagerFragment_to_branchReportListFragment"
+            app:destination="@id/BranchReportListFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"
+            app:popUpTo="@+id/reportPagerFragment"
+            app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_reportPagerFragment_to_salesReportListFragment"
+            app:destination="@id/salesReportListFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"
+            app:popUpTo="@+id/reportPagerFragment"
+            app:popUpToInclusive="false"/>
+    </fragment>
+    <fragment
+        android:id="@+id/BranchReportListFragment"
+        android:name="com.worka.eroyal.feature.report.byarea.branch.BranchReportListFragment"
+        android:label="BranchReportListFragment"
+        tools:layout="@layout/fragment_branch_report_list">
+        <action
+            android:id="@+id/action_branchReportListFragment_to_customerListByBranch"
+            app:destination="@id/customerListByBranch"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/customerListByBranch"
+        android:name="com.worka.eroyal.feature.report.byarea.CustomerListByBranchFragment"
+        android:label="CustomerListByBranchFragment">
+        <action
+            android:id="@+id/action_customerListByBranch_to_customerDetailsFragment"
+            app:destination="@id/customerDetailsFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"
+            app:popUpTo="@+id/customerListByBranch" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerDetailsFragment"
+        android:name="com.worka.eroyal.feature.mycustomers.CustomerDetailsFragment"
+        android:label="CustomerDetailsFragment" />
+    <fragment
+        android:id="@+id/salesReportListFragment"
+        android:name="com.worka.eroyal.feature.report.byarea.sales.SalesReportListFragment"
+        android:label="SalesReportListFragment"
+        tools:layout="@layout/fragment_sales_report_list" />
+</navigation>

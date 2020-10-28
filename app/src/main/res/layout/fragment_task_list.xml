@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.tasks.TasksViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/sr_task_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/space_min14"
+                android:layout_marginBottom="@dimen/space_10"
+                android:layout_weight="0.65"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/space_18"
+                app:cardElevation="@dimen/space_8">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/space_14"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/space_16"
+                        android:orientation="horizontal">
+                        <TextView
+                            style="@style/BlackBold16Text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.dateDisplay}"
+                            tools:text="December 2019"
+                            android:gravity="center"/>
+
+                        <ImageView
+                            android:id="@+id/btn_date_picker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_chevron_down"
+                            android:layout_marginLeft="@dimen/space_8"/>
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/space_16"
+                        android:layout_marginTop="@dimen/space_24"
+                        android:layout_marginRight="@dimen/space_16"
+                        android:layout_marginBottom="@dimen/space_16">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_task"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+
+                            android:scrollbarSize="@dimen/space_4"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/empty_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:visibility="@{viewModel.taskListEmptyLayout}"
+                            tools:visibility="visible">
+
+                            <ImageView
+                                android:id="@+id/img_no_data"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:src="@drawable/ic_no_data"
+                                android:visibility="@{viewModel.imgNoDataVisibility}"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_empty"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_chainStyle="packed" />
+
+                            <TextView
+                                android:id="@+id/tv_empty"
+                                style="@style/BlackBold16Text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_8"
+                                android:gravity="center"
+                                android:lineSpacingExtra="@dimen/space_6"
+                                android:text="@{viewModel.stateEmptyText}"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_subtext_empty_task"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/img_no_data" />
+
+                            <TextView
+                                android:id="@+id/tv_subtext_empty_task"
+                                style="@style/BlackBold12Text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_8"
+                                android:gravity="center"
+                                android:lineSpacingExtra="@dimen/space_6"
+                                android:text="@{viewModel.emptySubText}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_empty" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.35">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingLeft="@dimen/space_8"
+                    android:paddingRight="@dimen/space_8" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

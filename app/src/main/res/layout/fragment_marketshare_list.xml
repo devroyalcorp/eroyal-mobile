@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.tasks.TasksViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/space_24"
+            android:paddingRight="@dimen/space_24">
+
+            <TextView
+                style="@style/BlackBold16Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_32"
+                android:text="@string/market_share_data" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_add_market_share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="@dimen/space_16" />
+
+            <ImageView
+                android:id="@+id/btn_add_market_share"
+                android:layout_width="@dimen/space_52"
+                android:layout_height="@dimen/space_52"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/space_32"
+                android:background="@drawable/ic_add_circle" />
+
+            <Button
+                android:id="@+id/btn_flyout"
+                style="@style/ButtonWhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/space_48"
+                android:layout_marginBottom="@dimen/space_16"
+                android:background="@drawable/bg_button_green_rounded"
+                android:paddingLeft="@dimen/space_52"
+                android:paddingTop="@dimen/space_10"
+                android:paddingRight="@dimen/space_52"
+                android:paddingBottom="@dimen/space_10"
+                android:text="@string/finish"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

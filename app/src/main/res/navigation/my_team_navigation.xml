@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_team_navigation"
+    app:startDestination="@id/myTeamListFragment">
+
+    <fragment
+        android:id="@+id/myTeamListFragment"
+        android:name="com.worka.eroyal.feature.myteam.MyTeamListFragment"
+        android:label="MyTeamListFragment"
+        tools:layout="@layout/fragment_my_customer_list">
+        <action
+            android:id="@+id/action_myTeamListFragment_to_myTeamDetailsFragment"
+            app:destination="@id/myTeamDetailsFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/myTeamDetailsFragment"
+        android:name="com.worka.eroyal.feature.myteam.MyTeamDetailsFragment"
+        android:label="MyTeamDetailsFragment"
+        tools:layout="@layout/fragment_my_team_details"/>
+</navigation>

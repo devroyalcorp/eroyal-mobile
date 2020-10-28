@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation.xml"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/clockInOutFragment"
+        android:name="com.worka.eroyal.feature.clockinout.ClockInOutFragment"
+        android:label="ClockInOutFragment"
+        tools:layout="@layout/fragment_clock_in_out" />
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="com.worka.eroyal.feature.tasks.TasksFragment"
+        android:label="TasksFragment"
+        tools:layout="@layout/fragment_tasks" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.worka.eroyal.feature.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_clockInOutFragment"
+            app:destination="@id/clockInOutFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_mePagerFragment"
+            app:destination="@id/mePagerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.worka.eroyal.feature.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/mePagerFragment"
+        android:name="com.worka.eroyal.feature.me.MePagerFragment"
+        android:label="MePagerFragment"
+        tools:layout="@layout/fragment_me_pager"/>
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.worka.eroyal.feature.orders.OrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_orders"/>
+</navigation>

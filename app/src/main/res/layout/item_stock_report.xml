@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.worka.eroyal.data.report.Stock" />
+        <variable
+            name="adapter"
+            type="com.worka.eroyal.feature.common.GenericAppAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/space_24">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/stock_chart"
+            stock="@{data}"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/space_100"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginEnd="@dimen/space_24"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            gridAdapter="@{adapter}"
+            column="@{2}"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginRight="@dimen/space_32"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stock_chart" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

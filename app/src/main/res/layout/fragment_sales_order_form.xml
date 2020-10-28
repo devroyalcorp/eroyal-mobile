@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.orders.OrdersViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_32">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_sales"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_32"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginRight="@dimen/space_32"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/sales"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:text="@{viewModel.currentSales}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_consumer_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    app:layout_constraintLeft_toLeftOf="@+id/til_sales"
+                    app:layout_constraintRight_toRightOf="@+id/til_sales"
+                    android:visibility="@{viewModel.salesRole ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintTop_toBottomOf="@+id/til_sales"
+                    errorText="@{viewModel.consumerNameError}"
+                    app:errorEnabled="@{viewModel.consumerNameErrorEnabled}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/consumer_name"
+                        android:imeOptions="actionNext"
+                        android:text="@={viewModel.consumerName}"
+                        android:inputType="textCapWords" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_toko"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_32"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginRight="@dimen/space_32"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/til_consumer_name">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_toko"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/progress_toko"
+                        app:layout_constraintTop_toTopOf="parent"
+                        errorText="@{viewModel.tokoError}"
+                        app:errorEnabled="@{viewModel.tokoErrorEnabled}">
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/auto_toko"
+                            style="@style/BlackBold14Text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/toko"
+                            android:imeOptions="actionNext"
+                            android:inputType="textCapWords" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progress_toko"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/space_12"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_ship_to"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_32"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginRight="@dimen/space_32"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:visibility="@{viewModel.salesRole ? View.VISIBLE : View.GONE}"
+                    tools:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_toko">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_ship_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/progress_ship_to"
+                        app:layout_constraintTop_toTopOf="parent"
+                        errorText="@{viewModel.shipToError}"
+                        app:errorEnabled="@{viewModel.shipToErrorEnabled}">
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/auto_ship_to"
+                            style="@style/BlackBold14Text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/ship_to"
+                            android:imeOptions="actionNext"
+                            android:inputType="textCapWords" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progress_ship_to"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/space_12"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_delivery_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    app:layout_constraintLeft_toLeftOf="@+id/til_sales"
+                    app:layout_constraintRight_toRightOf="@+id/til_sales"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_ship_to"
+                    errorText="@{viewModel.deliveryDateError}"
+                    app:errorEnabled="@{viewModel.deliveryDateErrorEnabled}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_delivery_date"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/delivery_date"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:text="@{viewModel.deliveryDate}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_delivery_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:visibility="@{viewModel.salesRole ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintLeft_toLeftOf="@+id/til_sales"
+                    app:layout_constraintRight_toRightOf="@+id/til_sales"
+                    app:layout_constraintTop_toBottomOf="@+id/til_delivery_date"
+                    errorText="@{viewModel.deliveryAddressError}"
+                    app:errorEnabled="@{viewModel.deliveryAddressErrorEnabled}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_delivery_address"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/delivery_address"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:text="@={viewModel.deliveryAddress}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_mobile_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:visibility="@{viewModel.salesRole ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintLeft_toLeftOf="@+id/til_sales"
+                    app:layout_constraintRight_toRightOf="@+id/til_sales"
+                    app:layout_constraintTop_toBottomOf="@+id/til_delivery_address"
+                    errorText="@{viewModel.mobilePhoneError}"
+                    app:errorEnabled="@{viewModel.mobilePhoneErrorEnabled}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/mobile_phone"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:text="@={viewModel.mobilePhone}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:visibility="@{viewModel.salesRole ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintLeft_toLeftOf="@+id/til_sales"
+                    app:layout_constraintRight_toRightOf="@+id/til_sales"
+                    app:layout_constraintTop_toBottomOf="@+id/til_mobile_phone"
+                    errorText="@{viewModel.emailError}"
+                    app:errorEnabled="@{viewModel.emailErrorEnabled}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:text="@={viewModel.email}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_notes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:visibility="@{viewModel.salesRole ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintLeft_toLeftOf="@+id/til_sales"
+                    app:layout_constraintRight_toRightOf="@+id/til_sales"
+                    app:layout_constraintTop_toBottomOf="@+id/til_email"
+                    errorText="@{viewModel.notesError}"
+                    app:errorEnabled="@{viewModel.notesErrorEnabled}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:hint="@string/notes"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLines="5"
+                        android:singleLine="false"
+                        android:text="@={viewModel.notes}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_img_add_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_120"
+                    android:layout_marginLeft="@dimen/space_32"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginRight="@dimen/space_32"
+                    android:visibility="@{viewModel.salesRole ? View.GONE : View.VISIBLE}"
+                    android:background="@drawable/bg_border_radius"
+                    app:layout_constraintDimensionRatio="16:6"
+                    app:layout_constraintTop_toBottomOf="@id/til_notes">
+
+                    <ImageView
+                        imageUrlRadius="@{viewModel.orderImageUrl}"
+                        radius="@{16}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/space_8" />
+
+                    <ImageView
+                        android:id="@+id/btn_add_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/ic_add_photo" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_items_title"
+                    style="@style/BlackBold16Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_8"
+                    android:layout_marginTop="@dimen/space_24"
+                    android:text="@string/items"
+                    android:textAllCaps="true"
+                    app:layout_constraintLeft_toLeftOf="@id/til_delivery_date"
+                    app:layout_constraintTop_toBottomOf="@id/layout_img_add_photo" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_sales_order"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:maxHeight="@dimen/space_200"
+                    app:layout_constraintLeft_toLeftOf="@+id/til_sales"
+                    app:layout_constraintRight_toRightOf="@+id/til_sales"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_items_title" />
+
+                <ImageView
+                    android:id="@+id/btn_add_item"
+                    android:layout_width="@dimen/space_52"
+                    android:layout_height="@dimen/space_52"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/space_32"
+                    android:background="@drawable/ic_add_circle"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_order"
+                    app:layout_constraintLeft_toLeftOf="@+id/rv_sales_order"
+                    app:layout_constraintRight_toRightOf="@+id/rv_sales_order"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_sales_order"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <Button
+                    android:id="@+id/btn_order"
+                    style="@style/ButtonWhiteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/space_32"
+                    android:layout_marginTop="@dimen/space_24"
+                    android:layout_marginRight="@dimen/space_32"
+                    android:layout_marginBottom="@dimen/space_100"
+                    android:background="@drawable/bg_button_green_rounded"
+                    android:paddingTop="@dimen/space_8"
+                    android:paddingBottom="@dimen/space_8"
+                    android:text="@string/order"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_add_item" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

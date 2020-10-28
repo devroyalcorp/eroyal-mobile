@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>force_update</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>current_version</key>
+        <value>0</value>
+    </entry>
+    <entry>
+        <key>blocker</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>blocker_message</key>
+        <value></value>
+    </entry>
+</defaultsMap>

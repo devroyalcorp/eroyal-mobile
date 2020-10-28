@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.home.ActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_activity"
+            loadResource="@{rowViewModel.typeIcon}"
+            android:layout_width="@dimen/space_32"
+            android:layout_height="@dimen/space_32"
+            android:layout_marginLeft="@dimen/space_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginRight="@dimen/space_24"
+            android:text="@{rowViewModel.description}"
+            app:layout_constraintLeft_toRightOf="@+id/img_activity"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Visited Toko Kuningan" />
+
+        <TextView
+            style="@style/Grey12Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginRight="@dimen/space_24"
+            android:layout_marginBottom="@dimen/space_16"
+            android:text="@{rowViewModel.dateTime}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/img_activity"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description"
+            tools:text="Visited Toko Kuningan" />
+
+        <View
+            android:layout_width="@dimen/space_2"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/space_2"
+            android:background="@color/colorGrey"
+            android:visibility="@{rowViewModel.lineVisibility}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/img_activity"
+            app:layout_constraintRight_toRightOf="@+id/img_activity"
+            app:layout_constraintTop_toBottomOf="@+id/img_activity" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

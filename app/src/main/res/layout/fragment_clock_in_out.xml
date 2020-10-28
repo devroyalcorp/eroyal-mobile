@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.clockinout.ClockInOutViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_32"
+            android:text="@{viewModel.currentDate}" />
+
+        <TextClock
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:textSize="@dimen/text_30" />
+
+        <Button
+            android:id="@+id/btn_clock_in_out"
+            style="@style/ButtonWhiteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/space_24"
+            android:background="@drawable/bg_button_green_rounded"
+            android:enabled="@{viewModel.buttonEnable}"
+            android:paddingLeft="@dimen/space_64"
+            android:paddingTop="@dimen/space_8"
+            android:paddingRight="@dimen/space_64"
+            android:paddingBottom="@dimen/space_8"
+            android:text="@{viewModel.labelClockInOutButton}"
+            android:textAllCaps="false"
+            android:visibility="@{viewModel.buttonVisibility}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_24"
+            android:layout_marginBottom="@dimen/space_16">
+
+            <com.otaliastudios.cameraview.CameraView
+                android:id="@+id/camera"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginBottom="@dimen/space_8"
+                app:layout_constraintDimensionRatio="1:1"
+                app:cameraAudio="off"
+                app:cameraUseDeviceOrientation="false"
+                app:cameraFacing="front"
+                app:cameraMode="picture"
+                android:visibility="@{viewModel.isImageCaptured ? View.INVISIBLE : View.VISIBLE}"
+                app:cameraPictureFormat="jpeg"
+                app:cameraPictureSizeAspectRatio="1:1"
+                app:layout_constraintBottom_toTopOf="@+id/btn_retake"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/frame"
+                android:layout_width="@dimen/space_150"
+                android:layout_height="0dp"
+                android:background="@drawable/ic_frame_capture"
+                android:visibility="@{viewModel.isImageCaptured ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@+id/camera"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="@+id/camera"
+                app:layout_constraintRight_toRightOf="@+id/camera"
+                app:layout_constraintTop_toTopOf="@+id/camera"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/btn_shutter"
+                android:layout_width="@dimen/space_32"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/space_12"
+                android:background="@drawable/ic_shutter"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="@{viewModel.isImageCaptured ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@+id/camera"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="@+id/camera"
+                app:layout_constraintRight_toRightOf="@+id/camera" />
+
+            <ImageView
+                imageUrlRadius="@{viewModel.imageClockInUri}"
+                radius="@{1}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="@{viewModel.isImageCaptured ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@+id/camera"
+                app:layout_constraintLeft_toLeftOf="@+id/camera"
+                app:layout_constraintRight_toRightOf="@+id/camera"
+                app:layout_constraintTop_toTopOf="@+id/camera" />
+
+
+            <ImageView
+                android:id="@+id/btn_retake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_cancel_red"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{() -> viewModel.onRetakeImage()}"
+                android:visibility="@{viewModel.buttonRetakeVisibility}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/camera" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>

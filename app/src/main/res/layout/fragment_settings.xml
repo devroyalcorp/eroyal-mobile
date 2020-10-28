@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.worka.eroyal.extensions.StringExtKt"/>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.base.BaseViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+        <include android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            app:avatarUrl="@{viewModel.userImageProfile}"
+            app:initial="@{StringExtKt.getInitialName(viewModel.user.name)}"/>
+
+        <fragment
+            android:id="@+id/navSettingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:navGraph="@navigation/settings_navigation"
+            app:defaultNavHost="true"/>
+
+    </LinearLayout>
+
+</layout>

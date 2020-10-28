@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.report.ReportViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/BlackBold16Text"
+            android:id="@+id/tv_branches_in_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Branches in Jawa Barat"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginRight="@dimen/space_24"
+            android:text="@{viewModel.branchListReportTitle}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_area_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_24"
+            android:visibility="@{viewModel.emptyAreaListVisibility ? View.GONE :  View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_branches_in_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_branches_in_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_200"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_16"
+            android:gravity="center"
+            android:text="@string/no_data"
+            android:visibility="@{viewModel.emptyAreaListVisibility ? View.VISIBLE :  View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

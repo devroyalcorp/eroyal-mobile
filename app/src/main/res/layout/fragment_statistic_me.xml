@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.me.MeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <TextView
+            android:id="@+id/tv_statistic"
+            style="@style/BlackBold16Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@string/statistic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_circle_chart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginEnd="@dimen/space_24"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/space_16"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_statistic">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_sales_label"
+                    style="@style/BlackBold14Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_24"
+                    android:text="@string/sales"
+                    app:layout_constraintLeft_toLeftOf="@+id/sales_circle_chart"
+                    app:layout_constraintRight_toRightOf="@+id/sales_circle_chart"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/GreenBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.salesPercentage}"
+                    app:layout_constraintBottom_toBottomOf="@+id/sales_circle_chart"
+                    app:layout_constraintLeft_toLeftOf="@+id/sales_circle_chart"
+                    app:layout_constraintRight_toRightOf="@+id/sales_circle_chart"
+                    app:layout_constraintTop_toTopOf="@+id/sales_circle_chart" />
+
+                <pl.pawelkleczkowski.customgauge.CustomGauge
+                    android:id="@+id/sales_circle_chart"
+                    completedTask="@{viewModel.salesCircleChartData}"
+                    totalTask="@{100}"
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginRight="@dimen/space_24"
+                    android:layout_marginBottom="@dimen/space_16"
+                    app:gaugePointEndColor="@color/colorGreen"
+                    app:gaugePointStartColor="@color/colorGreen"
+                    app:gaugeStartAngle="90"
+                    app:gaugeStartValue="0"
+                    app:gaugeStrokeCap="ROUND"
+                    app:gaugeStrokeColor="@color/colorGrey"
+                    app:gaugeStrokeWidth="@dimen/space_4"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/visit_circle_chart"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sales_label" />
+
+                <TextView
+                    android:id="@+id/tv_sales_value"
+                    style="@style/BlackBold12Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginBottom="@dimen/space_16"
+                    android:text="@{viewModel.salesValue}"
+                    app:layout_constraintLeft_toLeftOf="@+id/sales_circle_chart"
+                    app:layout_constraintRight_toRightOf="@+id/sales_circle_chart"
+                    app:layout_constraintTop_toBottomOf="@+id/sales_circle_chart"
+                    tools:text="10.000J" />
+
+                <TextView
+                    android:id="@+id/tv_sales_target"
+                    style="@style/Grey12Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_24"
+                    android:text="@{viewModel.salesTotal}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@+id/sales_circle_chart"
+                    app:layout_constraintRight_toRightOf="@+id/sales_circle_chart"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sales_value"
+                    tools:text="of 10J" />
+
+                <TextView
+                    android:id="@+id/tv_visit_label"
+                    style="@style/BlackBold14Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_24"
+                    android:text="@string/rkb_vs_visit"
+                    app:layout_constraintLeft_toLeftOf="@+id/visit_circle_chart"
+                    app:layout_constraintRight_toRightOf="@+id/visit_circle_chart"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/GreenBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.visitPercentage}"
+                    app:layout_constraintBottom_toBottomOf="@+id/visit_circle_chart"
+                    app:layout_constraintLeft_toLeftOf="@+id/visit_circle_chart"
+                    app:layout_constraintRight_toRightOf="@+id/visit_circle_chart"
+                    app:layout_constraintTop_toTopOf="@+id/visit_circle_chart" />
+
+                <pl.pawelkleczkowski.customgauge.CustomGauge
+                    android:id="@+id/visit_circle_chart"
+                    completedTask="@{viewModel.visitCircleChartData}"
+                    totalTask="@{100}"
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginBottom="@dimen/space_16"
+                    app:gaugePointEndColor="@color/colorGreen"
+                    app:gaugePointStartColor="@color/colorGreen"
+                    app:gaugeStartAngle="90"
+                    app:gaugeStartValue="0"
+                    app:gaugeStrokeCap="ROUND"
+                    app:gaugeStrokeColor="@color/colorGrey"
+                    app:gaugeStrokeWidth="@dimen/space_4"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@+id/sales_circle_chart"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_visit_label" />
+
+                <TextView
+                    android:id="@+id/tv_visit_value"
+                    style="@style/BlackBold12Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginBottom="@dimen/space_16"
+                    android:text="@{viewModel.visitValue}"
+                    app:layout_constraintLeft_toLeftOf="@+id/visit_circle_chart"
+                    app:layout_constraintRight_toRightOf="@+id/visit_circle_chart"
+                    app:layout_constraintTop_toBottomOf="@+id/visit_circle_chart"
+                    tools:text="10.000J" />
+
+                <TextView
+                    android:id="@+id/tv_visit_target"
+                    style="@style/Grey12Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_24"
+                    android:text="@{viewModel.visitTotal}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@+id/visit_circle_chart"
+                    app:layout_constraintRight_toRightOf="@+id/visit_circle_chart"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_visit_value"
+                    tools:text="of 10J" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_visit_line_chart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginEnd="@dimen/space_24"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/space_16"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_circle_chart">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_chart_title"
+                    style="@style/BlackBold14Text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_width="wrap_content"
+                    tools:text="Visit April"
+                    android:text="@{viewModel.chartTitle}"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_visit_chart_label"
+                    style="@style/BoldGreen18Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:layout_marginEnd="@dimen/space_8"
+                    android:text="@string/visit"
+                    app:layout_constraintBottom_toBottomOf="@+id/visitChart"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/visitChart"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_rkb_chart_label" />
+
+                <TextView
+                    android:id="@+id/tv_rkb_chart_label"
+                    style="@style/BlackBold18Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:layout_marginEnd="@dimen/space_8"
+                    android:text="@string/rkb"
+                    android:textColor="@color/colorRed"
+                    app:layout_constraintBottom_toBottomOf="@+id/visitChart"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/visitChart"
+                    app:layout_constraintTop_toTopOf="@+id/visitChart" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/visitChart"
+                    colors="@{viewModel.colorLineCharts}"
+                    datas="@{viewModel.chartDatas}"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/space_100"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginEnd="@dimen/space_16"
+                    android:layout_marginBottom="@dimen/space_16"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_visit_chart_label"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_chart_title" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

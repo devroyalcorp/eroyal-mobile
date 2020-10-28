@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.tasks.MarketShareItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_8"
+        android:background="@drawable/bg_grey_radius"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_8"
+            android:layout_marginBottom="@dimen/space_16"
+            android:layout_weight="0.9"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/BlackBold14Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Brand"
+                android:text="@{rowViewModel.name}" />
+
+            <TextView
+                style="@style/BlackBold14Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                tools:text="Rp. 1000"
+                android:text="@{rowViewModel.price}" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/space_18"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_8"
+            android:background="@drawable/ic_edit"
+            android:clickable="true"
+            android:visibility="@{rowViewModel.visibilityEdit}"
+            android:onClick="@{()-> rowViewModel.onEdit()}" />
+
+        <ImageView
+            android:layout_width="@dimen/space_18"
+            android:layout_height="@dimen/space_18"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_16"
+            android:background="@drawable/ic_cancel_red"
+            android:clickable="true"
+            android:onClick="@{()-> rowViewModel.onRemove()}" />
+
+    </LinearLayout>
+
+</layout>

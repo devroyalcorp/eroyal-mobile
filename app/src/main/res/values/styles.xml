@@ -1,0 +1,261 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/neutrif_pro</item>
+        <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+    </style>
+
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.DeviceDefault.DatePicker">
+        <item name="android:dateTextAppearance">@style/MyDatePickerTextAppearance</item>
+    </style>
+
+    <style name="MyDatePickerTextAppearance" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@drawable/date_picker_text_color_selector</item>
+    </style>
+
+    <style name="BlackText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="RedText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorRed</item>
+    </style>
+
+    <style name="WhiteText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="GreenText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorGreen</item>
+    </style>
+
+    <style name="GreyText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorGrey</item>
+    </style>
+
+    <style name="DarkGreyText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorDarkGrey</item>
+    </style>
+
+    <style name="BlackBoldText" parent="BlackText">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">@font/neutrif_pro_semibold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WhiteBoldText" parent="WhiteText">
+        <item name="android:fontFamily">@font/neutrif_pro_semibold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WhiteBold12Text" parent="WhiteBoldText">
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="WhiteBold14Text" parent="WhiteBoldText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="WhiteBold16Text" parent="WhiteBoldText">
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+
+    <style name="White12Text" parent="WhiteText">
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="WhiteBold10Text" parent="WhiteText">
+        <item name="android:textSize">@dimen/text_10</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="White14Text" parent="WhiteText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="GreenBoldText" parent="GreenText">
+        <item name="android:fontFamily">@font/neutrif_pro_semibold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RedBoldText" parent="RedText">
+        <item name="android:fontFamily">@font/neutrif_pro_semibold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RedBold12Text" parent="RedBoldText">
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="GreenBold12Text" parent="GreenBoldText">
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="GreenBold14Text" parent="GreenBoldText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="GreyBold14Text" parent="GreyBoldText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+
+    <style name="GreyBoldText" parent="GreyText">
+        <item name="android:fontFamily">@font/neutrif_pro_semibold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DarkGreyBoldText" parent="DarkGreyText">
+        <item name="android:fontFamily">@font/neutrif_pro_semibold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DarkGreyBold14Text" parent="DarkGreyBoldText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="DarkGreyBold16Text" parent="DarkGreyBoldText">
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+
+
+    <style name="ToolbarTitleText" parent="GreenText">
+        <item name="android:textSize">@dimen/space_16</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="Grey10Text" parent="GreyText">
+        <item name="android:textSize">@dimen/text_10</item>
+    </style>
+
+    <style name="Green12Text" parent="GreenText">
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="Green14Text" parent="GreenBoldText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="Black10Text" parent="BlackText">
+        <item name="android:textSize">@dimen/text_10</item>
+    </style>
+
+    <style name="Black12Text" parent="BlackText">
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="Black14Text" parent="BlackText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="Grey12Text" parent="GreyText">
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="Black16Text" parent="BlackText">
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+
+    <style name="BlackBold24Text" parent="BlackBoldText">
+        <item name="android:textSize">@dimen/text_24</item>
+    </style>
+
+    <style name="BlackBold22Text" parent="BlackText">
+        <item name="android:textSize">@dimen/text_22</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BlackBold18Text" parent="BlackText">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BlackBold16Text" parent="BlackBoldText">
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+
+    <style name="BlackBold14Text" parent="BlackBoldText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="BlackBold12Text" parent="BlackBoldText">
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="BlackBold10Text" parent="BlackBoldText">
+        <item name="android:textSize">@dimen/text_10</item>
+    </style>
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="BoldGreen16Text" parent="GreenBoldText">
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+
+    <style name="BoldGreen18Text" parent="GreenBoldText">
+        <item name="android:textSize">@dimen/text_18</item>
+    </style>
+
+    <style name="BoldGreenLargeText" parent="GreenBoldText">
+        <item name="android:textSize">@dimen/text_18</item>
+    </style>
+
+    <style name="ButtonWhiteText" parent="WhiteBoldText">
+        <item name="android:textSize">@dimen/text_18</item>
+    </style>
+
+    <style name="ButtonWhiteTextSmall" parent="WhiteBoldText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="ButtonGreen18Text" parent="GreenBoldText">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="ButtonGreenText" parent="GreenBold14Text">
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="BottomTabTextStyleActive">
+        <item name="android:textSize">@dimen/text_8</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BottomTabTextStyleInActive">
+        <item name="android:textSize">@dimen/text_8</item>
+    </style>
+
+    <style name="RedBold14Text" parent="RedBoldText">
+        <item name="android:textSize">@dimen/text_14</item>
+    </style>
+
+    <style name="NotificationBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="PlaceBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="DialogAnimationBounce">
+        <item name="android:windowEnterAnimation">@anim/anim_slideup_bounce</item>
+        <item name="android:windowExitAnimation">@anim/anim_slide_down</item>
+    </style>
+
+    <style name="SwitchCompat">
+        <item name="android:trackTint">@color/colorGrey</item>
+        <item name="android:thumbTint">@color/white</item>
+    </style>
+
+</resources>

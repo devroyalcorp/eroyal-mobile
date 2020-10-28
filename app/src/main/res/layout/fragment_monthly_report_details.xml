@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.worka.eroyal.extensions.StringExtKt"/>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.report.ReportViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/view_toolbar"
+                app:avatarUrl="@{viewModel.userImageProfile}"
+                app:initial="@{StringExtKt.getInitialName(viewModel.user.name)}"/>
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_date"
+                style="@style/BlackBold16Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:text="@{viewModel.monthMonthlyReportDetails}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="April 2020" />
+
+            <ImageView
+                android:id="@+id/img_avatar"
+                circleLoadImage="@{viewModel.selectedSalesMonthlyReport.imageProfile}"
+                initial="@{StringExtKt.getInitialName(viewModel.selectedSalesMonthlyReport.name)}"
+                android:layout_width="@dimen/image_home_width"
+                android:layout_height="@dimen/image_home_width"
+                android:layout_gravity="end"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginTop="@dimen/space_16"
+                android:background="@drawable/bg_circle_placeholder"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                style="@style/BoldGreen16Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_marginRight="@dimen/space_24"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/img_avatar"
+                tools:text="User name"
+                android:text="@{viewModel.selectedSalesMonthlyReport.name}"/>
+
+            <TextView
+                android:id="@+id/tv_brand"
+                style="@style/BlackBold16Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_marginRight="@dimen/space_24"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username"
+                tools:text="ELITE"
+                android:text="@{viewModel.selectedSalesMonthlyReport.brandNames}"/>
+
+            <TextView
+                android:id="@+id/tv_area"
+                style="@style/BlackBold16Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_marginRight="@dimen/space_24"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brand"
+                tools:text="Jawa Barat"
+                android:text="@{viewModel.selectedSalesMonthlyReport.areaNames}"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_monthly_report"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/img_avatar"
+                android:layout_marginTop="@dimen/space_24"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_marginRight="@dimen/space_16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:visibility="@{viewModel.emptyMonthlyVisitReportVisibility? View.GONE : View.VISIBLE}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_empty"
+                style="@style/BlackBold16Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="@{viewModel.emptyMonthlyVisitReportVisibility? View.VISIBLE : View.GONE}"
+                android:text="@string/no_visit_report_yet"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

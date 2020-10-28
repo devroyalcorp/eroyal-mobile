@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.report.ReportViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_table_report"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_48"
+            android:layout_marginTop="@dimen/space_8"
+            app:tabIndicatorHeight="@dimen/space_6"
+            app:tabIndicatorColor="@color/colorGreen"
+            app:tabIndicator="@drawable/bg_indicator"
+            app:tabMode="scrollable"
+            app:tabGravity="center"
+            app:tabIndicatorFullWidth="false"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_table_report"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="horizontal"
+            android:scrollbarSize="@dimen/space_3"/>
+
+    </LinearLayout>
+
+</layout>

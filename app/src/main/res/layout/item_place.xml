@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.tasks.visit.PlaceItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:onClick="@{() -> rowViewModel.onSelected()}"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_text"
+            style="?android:attr/dropDownItemStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_8"
+            android:ellipsize="marquee"
+            android:paddingTop="@dimen/space_8"
+            android:paddingBottom="@dimen/space_8"
+            android:singleLine="true"
+            android:text="@{rowViewModel.name}"
+            android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
+            tools:text="Text" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@drawable/bg_placeholder" />
+
+    </LinearLayout>
+</layout>

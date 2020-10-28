@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.worka.eroyal.extensions.StringExtKt"/>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.tasks.TasksViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <include android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            app:avatarUrl="@{viewModel.userImageProfile}"
+            app:initial="@{StringExtKt.getInitialName(viewModel.user.name)}"/>/>
+
+        <fragment
+            android:id="@+id/nav_task_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:navGraph="@navigation/task_navigation"
+            app:defaultNavHost="true"/>
+
+    </LinearLayout>
+</layout>

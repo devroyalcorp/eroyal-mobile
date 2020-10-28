@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.tasks.TasksViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/map_fragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_check_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_24"
+            tools:cardBackgroundColor="@android:color/white"
+            tools:cardCornerRadius="@dimen/space_16"
+            tools:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_16"
+                    android:layout_marginRight="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginBottom="@dimen/space_16"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_check_in"
+                        style="@style/ButtonWhiteText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/bg_button_green_rounded"
+                        android:enabled="@{viewModel.canCheckIn}"
+                        android:paddingLeft="@dimen/space_32"
+                        android:paddingTop="@dimen/space_10"
+                        android:paddingRight="@dimen/space_32"
+                        android:paddingBottom="@dimen/space_10"
+                        android:text="@string/check_in"
+                        android:textAllCaps="false" />
+
+                    <TextView
+                        style="@style/BlackBold14Text"
+                        android:id="@+id/btn_get_directions"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/get_direction"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_message_checkin"
+                    style="@style/Grey12Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/space_32"
+                    android:layout_marginRight="@dimen/space_32"
+                    android:layout_marginBottom="@dimen/space_16"
+                    android:gravity="center"
+                    android:lineSpacingExtra="@dimen/space_4"
+                    android:visibility="gone"
+                    android:text="@string/make_sure_location" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

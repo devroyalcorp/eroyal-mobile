@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomNavigationHomeMenuId"
+        android:icon="@drawable/ic_home"
+        android:title="@string/sales" />
+
+    <item
+        android:id="@+id/bottomNavigationClockMenuId"
+        android:icon="@drawable/ic_clock"
+        android:title="@string/orders" />
+
+    <item
+        android:id="@+id/navNotesId"
+        android:icon="@drawable/ic_tasks"
+        android:title="@string/notes" />
+
+    <item
+        android:id="@+id/bottomNavigationOrdersMenuId"
+        android:icon="@drawable/ic_order"
+        android:title="@string/promo" />
+
+    <item
+        android:id="@+id/bottomNavigationMeMenuId"
+        android:icon="@drawable/ic_me"
+        android:title="@string/program" />
+
+</menu>

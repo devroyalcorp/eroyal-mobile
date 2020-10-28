@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.report.OptionItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:onClick="@{() -> rowViewModel.onSelect()}"
+        android:layout_marginBottom="@dimen/space_8"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/Black14Text"
+            android:layout_margin="@dimen/space_8"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@{rowViewModel.name}"
+            android:layout_height="wrap_content"
+            tools:text="Jawa Barat"/>
+    </LinearLayout>
+
+</layout>

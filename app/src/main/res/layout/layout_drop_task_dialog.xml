@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/space_8"
+            android:paddingLeft="@dimen/space_8"
+            android:background="@drawable/bg_green_radius"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_close_drop_task"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_16"
+                android:background="@drawable/ic_close_white"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_16"
+                android:layout_marginRight="@dimen/space_16"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/btn_close_drop_task">
+
+                <TextView
+                    style="@style/White14Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/im_dropping_task" />
+
+
+                <RadioGroup
+                    android:id="@+id/rg_drop_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8">
+
+                    <RadioButton
+                        android:id="@+id/rb_target_doesnt_exist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_white_radius"
+                        android:button="@android:color/transparent"
+                        android:gravity="center"
+                        android:padding="@dimen/space_8"
+                        android:textStyle="bold"
+                        android:text="@string/target_doesnt_exist"
+                        android:textColor="@drawable/radio_button_text_selector" />
+
+                    <RadioButton
+                        android:id="@+id/rb_wrong_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/space_8"
+                        android:background="@drawable/bg_white_radius"
+                        android:button="@android:color/transparent"
+                        android:gravity="center"
+                        android:padding="@dimen/space_8"
+                        android:text="@string/wrong_address"
+                        android:textColor="@drawable/radio_button_text_selector" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/btn_confirm_drop_task"
+                    style="@style/BoldGreen16Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginBottom="@dimen/space_24"
+                    android:background="@drawable/bg_white_border_selector"
+                    android:paddingLeft="@dimen/space_48"
+                    android:paddingRight="@dimen/space_48"
+                    android:textColor="@drawable/text_color_selector"
+                    android:text="@string/confirm"
+                    android:enabled="false"
+                    android:textAllCaps="false" />
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</layout>

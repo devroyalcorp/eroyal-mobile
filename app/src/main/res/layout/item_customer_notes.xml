@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.worka.eroyal.extensions.StringExtKt"/>
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.mycustomers.notes.NotesItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/space_8"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_avatar"
+            circleLoadImage="@{rowViewModel.imageAvatar}"
+            initial="@{StringExtKt.getInitialName(rowViewModel.customerName)}"
+            android:layout_width="@dimen/image_home_width"
+            android:layout_height="@dimen/image_home_width"
+            android:layout_gravity="end"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_16"
+            android:background="@drawable/bg_circle_placeholder"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_16"
+            app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
+            app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+            android:layout_marginRight="@dimen/space_16"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="Customer"
+            android:text="@{rowViewModel.customerName}"
+            app:layout_constraintTop_toTopOf="@+id/img_avatar" />
+
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/BlackBold12Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="10 January 2020"
+            android:text="@{rowViewModel.date}"
+            app:layout_constraintLeft_toLeftOf="@+id/img_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/img_avatar"
+            android:layout_marginTop="@dimen/space_8"/>
+
+        <TextView
+            android:id="@+id/tv_notes"
+            style="@style/Black12Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Notes"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/space_16"
+            android:text="@{rowViewModel.notes}"
+            app:layout_constraintLeft_toLeftOf="@+id/img_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
+            android:layout_marginTop="@dimen/space_8"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/colorGrey"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_8"
+            app:layout_constraintTop_toBottomOf="@+id/tv_notes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

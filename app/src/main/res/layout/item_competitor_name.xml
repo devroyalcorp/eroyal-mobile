@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.mycustomers.market.CompetitorNameViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_4">
+        <TextView
+            style="@style/BlackBold12Text"
+            tools:text="Brand External"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:textColor="@{rowViewModel.color}"
+            android:layout_height="wrap_content"
+            android:text="@{rowViewModel.competitorName}"/>
+    </RelativeLayout>
+
+</layout>

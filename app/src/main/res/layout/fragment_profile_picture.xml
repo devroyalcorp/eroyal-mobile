@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.worka.eroyal.extensions.StringExtKt"/>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.settings.SettingsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/image_profile_picture"
+            android:layout_height="@dimen/image_profile_picture"
+            android:background="@drawable/bg_circle_placeholder"
+            android:layout_marginTop="@dimen/space_48"
+            circleLoadImage="@{viewModel.imageProfile}"
+            initial="@{StringExtKt.getInitialName(viewModel.user.name)}"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/BoldGreen16Text"
+            android:layout_marginTop="@dimen/space_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_profile_picture"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/space_32"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginRight="@dimen/space_32"
+            android:padding="@dimen/space_24"
+            android:background="@drawable/bg_grey_light_radius">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_new_profile_picture"
+                style="@style/BlackBold16Text"
+                android:clickable="true"
+                android:paddingBottom="@dimen/space_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_profile_picture"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_delete_profile_picture"
+                style="@style/BlackBold16Text"
+                android:clickable="true"
+                android:paddingTop="@dimen/space_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_profile_picture"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

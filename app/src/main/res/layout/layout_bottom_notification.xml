@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="message"
+            type="String" />
+    </data>
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="?actionBarSize"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bottom_notification_static">
+
+            <ImageView
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/space_16"
+                android:background="@drawable/ic_close_white" />
+
+            <TextView
+                android:id="@+id/tv_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginTop="@dimen/space_48"
+                android:layout_marginRight="@dimen/space_24"
+                android:gravity="center"
+                android:text="@{message}"
+                android:textColor="@android:color/white"
+                tools:text="@string/no_notification" />
+
+            <Button
+                android:id="@+id/btn_view_details"
+                style="@style/ButtonGreenText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_notification"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginTop="@dimen/space_32"
+                android:layout_marginRight="@dimen/space_24"
+                android:elevation="@dimen/space_0"
+                android:layout_marginBottom="@dimen/space_48"
+                android:background="@drawable/bg_white_border_selector"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="@string/view_details" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

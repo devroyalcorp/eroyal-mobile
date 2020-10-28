@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/task_navigation"
+    app:startDestination="@id/tasksFragment">
+
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="com.worka.eroyal.feature.tasks.TasksFragment"
+        android:label="TasksFragment">
+        <action
+            android:id="@+id/action_tasksFragment_to_taskListFragment"
+            app:destination="@id/taskListFragment" />
+        <action
+            android:id="@+id/action_tasksFragment_to_followUpVisitFragment2"
+            app:destination="@id/followUpVisitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskDetailsFragment"
+        android:name="com.worka.eroyal.feature.tasks.TaskDetailsFragment"
+        android:label="TaskDetailsFragment"
+        tools:layout="@layout/fragment_task_details">
+        <action
+            android:id="@+id/action_taskDetailsFragment_to_checkInMapsFragment"
+            app:destination="@id/checkInMapsFragment"
+            app:enterAnim="@anim/anim_bottom_to_top"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/anim_top_to_bottom" />
+    </fragment>
+    <fragment
+        android:id="@+id/visitFormFragment"
+        android:name="com.worka.eroyal.feature.tasks.checklist.VisitFormFragment"
+        android:label="VisitFormFragment"
+        tools:layout="@layout/fragment_visit_form">
+        <action
+            android:id="@+id/action_visitFormFragment_to_addMarketShareFragment"
+            app:destination="@id/marketShareListFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/signatureFormFragment"
+        android:name="com.worka.eroyal.feature.tasks.SignatureFormFragment"
+        android:label="SignatureFormFragment"
+        tools:layout="@layout/fragment_signature_form">
+        <action
+            android:id="@+id/action_signatureFormFragment_to_visitFormFragment"
+            app:destination="@id/visitFormFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/marketShareListFragment"
+        android:name="com.worka.eroyal.feature.tasks.MarketShareListFragment"
+        android:label="MarketShareListFragment"
+        tools:layout="@layout/fragment_marketshare_list" >
+        <action
+            android:id="@+id/action_marketShareListFragment_to_addEditMarketShareFragment"
+            app:destination="@id/addEditMarketShareFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkInMapsFragment"
+        android:name="com.worka.eroyal.feature.tasks.CheckInMapsFragment"
+        android:label="CheckInMapsFragment"
+        tools:layout="@layout/fragment_check_in_maps">
+        <action
+            android:id="@+id/action_checkInMapsFragment_to_signatureFormFragment"
+            app:destination="@id/signatureFormFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"
+            app:popUpTo="@id/taskDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskListFragment"
+        android:name="com.worka.eroyal.feature.tasks.TaskListFragment"
+        android:label="TaskListFragment"
+        tools:layout="@layout/fragment_task_list">
+        <action
+            android:id="@+id/action_taskListFragment_to_taskDetailsFragment"
+            app:destination="@id/taskDetailsFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/followUpVisitFragment"
+        android:name="com.worka.eroyal.feature.tasks.visit.FollowUpVisitFragment"
+        android:label="FollowUpVisitFragment"
+        tools:layout="@layout/fragment_follow_up_visit">
+        <action
+            android:id="@+id/action_followUpVisitFragment_to_signatureFormFragment"
+            app:destination="@id/signatureFormFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right" />
+        <action
+            android:id="@+id/action_followUpVisitFragment_to_addCustomerFragment"
+            app:destination="@id/addCustomerFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/addCustomerFragment"
+        android:name="com.worka.eroyal.feature.tasks.visit.AddCustomerFragment"
+        android:label="AddCustomerFragment"
+        tools:layout="@layout/fragment_add_customer">
+        <action
+            android:id="@+id/action_addCustomerFragment_to_signatureFormFragment"
+            app:destination="@id/signatureFormFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"
+            app:popUpTo="@id/followUpVisitFragment" />
+        <action
+            android:id="@+id/action_addCustomerFragment_to_placePickerFragment"
+            app:destination="@id/placePickerFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/placePickerFragment"
+        android:name="com.worka.eroyal.feature.tasks.visit.PlacePickerFragment"
+        android:label="PlacePickerFragment"
+        tools:layout="@layout/fragment_place_picker"/>
+    <fragment
+        android:id="@+id/addEditMarketShareFragment"
+        android:name="com.worka.eroyal.feature.tasks.AddEditMarketShareFragment"
+        android:label="AddEditMarketShareFragment"
+        tools:layout="@layout/fragment_add_edit_market_share"/>
+</navigation>

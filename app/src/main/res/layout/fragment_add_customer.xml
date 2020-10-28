@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.tasks.TasksViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/BlackBold16Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:gravity="center"
+            android:text="@string/add_new_customer" />
+
+        <ScrollView
+            android:id="@+id/layout_form_follow_up_visit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_32"
+                android:layout_marginRight="@dimen/space_32"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/layout_img_add_photo_profile"
+                    android:layout_width="@dimen/space_100"
+                    android:layout_height="@dimen/space_100"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:background="@drawable/bg_border_radius"
+                    app:layout_constraintDimensionRatio="16:6">
+
+                    <ImageView
+                        imageUrlRadius="@{viewModel.customerImageProfileUri}"
+                        radius="@{16}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/space_8" />
+
+                    <ImageView
+                        android:id="@+id/btn_add_photo_add_customer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/ic_add_photo" />
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_consumer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_name"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/customer_name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:text="@={viewModel.customerName}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_address"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/address"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:text="@={viewModel.customerAddress}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_city"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/city"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:text="@={viewModel.customerCity}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_contact_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_contact_person"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/contact_person"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:text="@={viewModel.customerContactPerson}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_phone"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/phone"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:text="@={viewModel.customerPhone}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_customer_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_type"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/customer_type"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:text="@={viewModel.customerType}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_customer_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_area"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:hint="@string/area"
+                        android:inputType="textCapWords" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_customer_branch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_branch"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:hint="@string/branch"
+                        android:inputType="textCapWords" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_visit_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_visit_reason"
+                        style="@style/BlackBold14Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/visit_reason"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:maxLines="3"
+                        android:singleLine="false"
+                        android:text="@={viewModel.visitReason}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                            android:id="@+id/auto_brand"
+                            style="@style/BlackBold14Text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:inputType="textCapWords"
+                            android:imeOptions="actionDone"
+                            android:hint="@string/brand" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ProgressBar
+                        android:id="@+id/brand_progress"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        android:layout_margin="@dimen/space_12"
+                        android:visibility="gone"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_img_add_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_120"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:background="@drawable/bg_border_radius"
+                    app:layout_constraintDimensionRatio="16:6"
+                    app:layout_constraintTop_toBottomOf="@id/tv_label_add_photo">
+
+                    <TextView
+                        style="@style/Grey12Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btn_add_photo_follow_up_visit"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/space_8"
+                        android:text="@string/add_visit_image" />
+
+                    <ImageView
+                        imageUrlRadius="@{viewModel.urlImageFollowUpVisit}"
+                        radius="@{16}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/space_8" />
+
+                    <ImageView
+                        android:id="@+id/btn_add_photo_follow_up_visit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/ic_add_photo" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_pick_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/space_32"
+                    android:layout_marginTop="@dimen/space_24"
+                    android:layout_marginRight="@dimen/space_32"
+                    android:layout_marginBottom="@dimen/space_8"
+                    android:background="@drawable/bg_border_radius"
+                    android:clickable="true"
+                    android:paddingTop="@dimen/space_12"
+                    android:paddingBottom="@dimen/space_12">
+
+                    <TextView
+                        style="@style/ButtonGreenText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawableLeft="@drawable/ic_location_black"
+                        android:drawablePadding="@dimen/space_8"
+                        android:gravity="center_vertical"
+                        android:text="@string/pick_customer_location" />
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/btn_submit_add_customer"
+                    style="@style/ButtonWhiteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/space_32"
+                    android:layout_marginTop="@dimen/space_48"
+                    android:layout_marginRight="@dimen/space_32"
+                    android:layout_marginBottom="@dimen/space_32"
+                    android:background="@drawable/bg_button_green_rounded"
+                    android:enabled="@{viewModel.canSubmitAddCustomer}"
+                    android:paddingTop="@dimen/space_8"
+                    android:paddingBottom="@dimen/space_8"
+                    android:text="@string/submit"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

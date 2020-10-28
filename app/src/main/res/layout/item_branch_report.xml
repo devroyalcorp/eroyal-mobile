@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.report.byarea.branch.BranchReportItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_16"
+        expanded="@{rowViewModel.expanded}"
+        android:layout_marginRight="@dimen/space_16"
+        android:onClick="@{() -> rowViewModel.expandCollapse()}"
+        android:layout_marginBottom="@dimen/space_16">
+
+        <TextView
+            android:id="@+id/tv_area_name"
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Bandung"
+            android:text="@{rowViewModel.branchName}"/>
+
+        <ImageView
+            android:id="@+id/btn_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_chevron_up"
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="@{() -> rowViewModel.expandCollapse()}"
+            app:layout_constraintTop_toTopOf="@+id/tv_area_name"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_area_name"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_area_expand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{rowViewModel.expanded ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@+id/tv_area_name">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_report_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                horizAdapter="@{rowViewModel.reportInfoAdapter}"/>
+
+            <TextView
+                android:id="@+id/tv_head_count_title"
+                style="@style/BlackBold14Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:text="@string/head_count"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_report_type" />
+
+            <TextView
+                android:id="@+id/tv_asm_count"
+                style="@style/BlackBold16Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_head_count_title"
+                tools:text="16"
+                android:text="@{rowViewModel.asmCount}"/>
+
+            <TextView
+                style="@style/Black14Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_8"
+                android:text="@string/asms"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_asm_count"
+                app:layout_constraintLeft_toRightOf="@+id/tv_asm_count"
+                app:layout_constraintTop_toTopOf="@+id/tv_asm_count" />
+
+            <TextView
+                android:id="@+id/tv_sales_count"
+                style="@style/BlackBold16Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_asm_count"
+                tools:text="16"
+                android:text="@{rowViewModel.salesCount}"/>
+
+            <TextView
+                style="@style/Black14Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_8"
+                android:text="@string/sales"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_sales_count"
+                app:layout_constraintLeft_toRightOf="@+id/tv_sales_count"
+                app:layout_constraintTop_toTopOf="@+id/tv_sales_count" />
+
+            <TextView
+                android:id="@+id/tv_top_sales_title"
+                style="@style/BlackBold14Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                android:text="@string/top_sales"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sales_count" />
+
+            <TextView
+                style="@style/Black14Text"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_100"
+                android:gravity="center"
+                android:text="@string/coming_soon"
+                app:layout_constraintTop_toBottomOf="@+id/tv_top_sales_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/colorGrey"
+            android:layout_marginTop="@dimen/space_16"
+            app:layout_constraintTop_toBottomOf="@+id/layout_area_expand"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

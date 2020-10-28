@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <variable
+            name="avatarUrl"
+            type="String" />
+        <variable
+            name="initial"
+            type="String" />
+
+    </data>
+    <androidx.appcompat.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btn_left_drawer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_24"
+                android:background="@drawable/ic_nav"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_24"
+                android:background="@drawable/ic_chevron_left"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_24"
+                android:background="@drawable/ic_check"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/BoldGreenLargeText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/space_32"
+                android:layout_marginRight="@dimen/space_8"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:layout_constraintLeft_toRightOf="@+id/btn_back"
+                app:layout_constraintRight_toLeftOf="@+id/img_avatar"
+                app:layout_constraintTop_toTopOf="@+id/img_avatar"
+                tools:text="Title" />
+
+            <ImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="@dimen/image_home_width"
+                android:layout_height="@dimen/image_home_width"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/space_24"
+                android:layout_marginRight="@dimen/space_24"
+                android:layout_marginBottom="@dimen/space_8"
+                android:background="@drawable/bg_circle_placeholder"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                circleLoadImage="@{avatarUrl}"
+                initial="@{initial}"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+</layout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="com.worka.eroyal.extensions.StringExtKt"/>
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.mycustomers.CustomerItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="@{() -> rowViewModel.onSelected()}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_customer"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_count"
+                style="@style/BoldGreen18Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{rowViewModel.count}"
+                android:visibility="@{(rowViewModel.count.isEmpty()) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_customer_address"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_customer_name"
+                tools:text="12" />
+
+            <ImageView
+                android:id="@+id/img_avatar"
+                circleLoadImage="@{rowViewModel.imageAvatar}"
+                initial="@{StringExtKt.getInitialName(rowViewModel.customerName)}"
+                android:layout_width="@dimen/image_home_width"
+                android:layout_height="@dimen/image_home_width"
+                android:layout_gravity="end"
+                tools:visibility="visible"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_16"
+                android:background="@drawable/bg_circle_placeholder"
+                app:layout_constraintLeft_toRightOf="@+id/tv_count"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_customer_name"
+                style="@style/BlackBold16Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_16"
+                android:text="@{rowViewModel.customerName}"
+                app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+                app:layout_constraintRight_toLeftOf="@+id/img_state"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Furnilio" />
+
+            <ImageView
+                android:id="@+id/img_state"
+                loadResource="@{rowViewModel.getStateIcon}"
+                android:layout_width="@dimen/space_24"
+                android:layout_height="@dimen/space_24"
+                app:layout_constraintRight_toLeftOf="@+id/btn_detail"
+                android:layout_marginLeft="@dimen/space_8"
+                android:layout_marginRight="@dimen/space_8"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_customer_name"
+                app:layout_constraintLeft_toRightOf="@+id/tv_customer_name" />
+
+            <TextView
+                android:id="@+id/tv_customer_address"
+                style="@style/Black12Text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{rowViewModel.address}"
+                android:layout_marginRight="@dimen/space_8"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_customer_name"
+                app:layout_constraintRight_toLeftOf="@+id/btn_detail"
+                app:layout_constraintTop_toBottomOf="@+id/tv_customer_name"
+                tools:text="King Koil, central" />
+
+            <ImageView
+                android:id="@+id/btn_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_chevron_right"
+                android:visibility="@{rowViewModel.arrowVisibility}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginRight="@dimen/space_16"
+                app:layout_constraintTop_toTopOf="@+id/tv_customer_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginTop="@dimen/space_16"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@+id/layout_customer" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/orders_navigation"
+    app:startDestination="@id/salesOrderFormFragment">
+
+    <fragment
+        android:id="@+id/salesOrderFormFragment"
+        android:name="com.worka.eroyal.feature.orders.SalesOrderFormFragment"
+        android:label="SalesOrderFormFragment"
+        tools:layout="@layout/fragment_sales_order_form">
+        <action
+            android:id="@+id/action_salesOrderFormFragment_to_addItemOrdersFragment"
+            app:destination="@id/addItemOrdersFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"
+            app:popUpTo="@id/salesOrderFormFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_salesOrderFormFragment_to_summaryOrdersFragment"
+            app:destination="@id/summaryOrdersFragment"
+            app:enterAnim="@anim/anim_enter_left"
+            app:popExitAnim="@anim/anim_leave_right"
+            app:popUpTo="@id/salesOrderFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addItemOrdersFragment"
+        android:name="com.worka.eroyal.feature.orders.AddItemOrdersFragment"
+        android:label="AddItemOrdersFragment"
+        tools:layout="@layout/fragment_add_item_orders" />
+    <fragment
+        android:id="@+id/summaryOrdersFragment"
+        android:name="com.worka.eroyal.feature.orders.SummaryOrdersFragment"
+        android:label="SummaryOrdersFragment"
+        tools:layout="@layout/fragment_summary_orders" />
+</navigation>

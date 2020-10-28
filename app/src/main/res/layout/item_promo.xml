@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.mycustomers.promo.PromoItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        width="@{rowViewModel.width}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            radius="@{16}"
+            imageUrlRadius="@{rowViewModel.imageUrl}"
+            android:layout_marginLeft="@dimen/space_6"
+            android:layout_marginTop="@dimen/space_12"
+            android:layout_marginRight="@dimen/space_6"
+            android:layout_marginBottom="@dimen/space_12"
+            android:clickable="true"
+            android:background="@drawable/bg_placeholder"
+            android:onClick="@{() -> rowViewModel.onSelected()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

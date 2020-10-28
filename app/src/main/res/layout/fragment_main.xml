@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <fragment
+            android:id="@+id/navHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/layout_navigation"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:navGraph="@navigation/main_navigation"
+            app:defaultNavHost="true"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/top_shadow"
+            android:layout_marginBottom="@dimen/space_min10"
+            android:layout_above="@+id/layout_navigation"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/layout_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/space_min8"
+            android:background="@drawable/bg_tab_home"
+            app:cardCornerRadius="@dimen/space_18"
+            android:elevation="@dimen/space_0"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tab_height"
+                    android:layout_marginTop="@dimen/space_4"
+                    app:elevation="@dimen/space_0"
+                    android:background="@android:color/transparent"
+                    app:itemBackground="@android:color/transparent"
+                    app:itemHorizontalTranslationEnabled="false"
+                    app:itemIconTint="@drawable/bg_item_color_selector"
+                    app:itemTextColor="@drawable/bg_item_color_selector"
+                    app:itemTextAppearanceActive="@style/BottomTabTextStyleActive"
+                    app:itemTextAppearanceInactive="@style/BottomTabTextStyleInActive"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/tab" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_24"
+                    android:layout_marginBottom="@dimen/space_min4"
+                    android:background="@drawable/bg_bottom_notification_static" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</layout>

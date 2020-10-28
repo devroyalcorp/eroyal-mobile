@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.orders.OrdersViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/tv_so_title"
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_32"
+            android:text="@string/no_so"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_no_so"
+            style="@style/Black14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginRight="@dimen/space_48"
+            android:text="@{viewModel.summaryOrdersData.soNumber}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_delivery_address"
+            app:layout_constraintTop_toBottomOf="@+id/tv_so_title"
+            tools:text="3203456" />
+
+        <TextView
+            android:id="@+id/tv_order_date_title"
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@string/order_date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_no_so" />
+
+        <TextView
+            android:id="@+id/tv_order_date"
+            style="@style/Black14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@{viewModel.summaryOrdersData.createdAt}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_date_title"
+            tools:text="20 Juni 2020" />
+
+        <TextView
+            android:id="@+id/tv_sales_title"
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@string/sales"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_order_date" />
+
+        <TextView
+            android:id="@+id/tv_sales"
+            style="@style/Black14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginRight="@dimen/space_48"
+            android:text="@{viewModel.user.name}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_email"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sales_title"
+            tools:text="John Doe" />
+
+        <TextView
+            android:id="@+id/tv_delivery_address_title"
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_32"
+            android:text="@string/delivery_address"
+
+            app:layout_constraintLeft_toRightOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_delivery_address"
+            style="@style/Black14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginRight="@dimen/space_32"
+            android:text="@{viewModel.summaryOrdersData.address}"
+            app:layout_constraintLeft_toRightOf="@+id/guideline5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivery_address_title"
+            tools:text="Jl. Gadobangkong" />
+
+        <TextView
+            android:id="@+id/tv_mobile_phone_title"
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@string/phone"
+            app:layout_constraintLeft_toRightOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/tv_delivery_address" />
+
+        <TextView
+            android:id="@+id/tv_mobile_phone"
+            style="@style/Black14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@{viewModel.summaryOrdersData.phoneNumber}"
+            app:layout_constraintLeft_toRightOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mobile_phone_title"
+            tools:text="083451241241" />
+
+        <TextView
+            android:id="@+id/tv_email_title"
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@string/email"
+            app:layout_constraintLeft_toRightOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mobile_phone" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/Black14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginRight="@dimen/space_32"
+            android:text="@{viewModel.summaryOrdersData.email}"
+            app:layout_constraintLeft_toRightOf="@+id/guideline5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_email_title"
+            tools:text="john@email.com" />
+
+        <TextView
+            android:id="@+id/tv_attachment_title"
+            style="@style/BlackBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_48"
+            android:layout_marginTop="@dimen/space_32"
+            android:visibility="@{viewModel.salesRole ? View.INVISIBLE : View.VISIBLE}"
+            android:text="@string/attachment"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sales" />
+
+        <RelativeLayout
+            android:id="@+id/layout_attachment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_120"
+            android:layout_marginLeft="@dimen/space_32"
+            android:layout_marginTop="@dimen/space_16"
+            android:visibility="@{viewModel.salesRole ? View.INVISIBLE : View.VISIBLE}"
+            android:layout_marginRight="@dimen/space_32"
+            android:background="@drawable/bg_border_radius"
+            app:layout_constraintDimensionRatio="16:6"
+            app:layout_constraintTop_toBottomOf="@id/tv_attachment_title">
+
+            <ImageView
+                imageUrlRadius="@{viewModel.summaryOrdersData.image}"
+                radius="@{16}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/space_8" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/btn_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_download"
+            android:layout_marginTop="@dimen/space_32"
+            app:layout_constraintTop_toBottomOf="@+id/layout_attachment"
+            app:layout_constraintBottom_toTopOf="@+id/tv_download"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_download"
+            style="@style/GreenBold14Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@string/download_so"
+            android:layout_marginBottom="@dimen/space_48"
+            app:layout_constraintTop_toBottomOf="@+id/btn_download"
+            app:layout_constraintLeft_toLeftOf="@+id/btn_download"
+            app:layout_constraintRight_toRightOf="@+id/btn_download" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

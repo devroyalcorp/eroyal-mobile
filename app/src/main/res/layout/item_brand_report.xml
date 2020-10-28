@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="rowViewModel"
+            type="com.worka.eroyal.feature.report.bybrands.BrandReportViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="@{() -> rowViewModel.onSelected()}">
+
+        <TextView
+            android:id="@+id/tv_count"
+            style="@style/BoldGreen18Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:gravity="center"
+            android:text="@{rowViewModel.count}"
+            android:visibility="@{(rowViewModel.count.isEmpty()) ? View.GONE : View.VISIBLE}"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_brand_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_brand_name"
+            tools:text="12" />
+
+        <TextView
+            android:id="@+id/tv_brand_name"
+            style="@style/BlackBold16Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_16"
+            android:text="@{rowViewModel.brandName}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Furnilio" />
+
+        <TextView
+            android:id="@+id/tv_customer_brand"
+            style="@style/Black12Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_16"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/tasks_assigned"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_count"
+            app:layout_constraintLeft_toRightOf="@+id/tv_count"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_count"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginTop="@dimen/space_8"
+            android:background="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@+id/tv_customer_brand" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

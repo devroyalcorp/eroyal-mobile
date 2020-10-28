@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.report.ReportViewModel" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_report_by_area"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:visibility="gone"
+            android:visibility="@{viewModel.isLoadingShow ? View.VISIBLE : View.GONE}"
+            app:shimmer_duration="700">
+
+            <include layout="@layout/view_report_by_area_placeholder" />
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoadingShow ? View.GONE : View.VISIBLE}"
+            android:overScrollMode="never">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_report_by_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_report_per_area_title"
+                    style="@style/BlackBold16Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:gravity="center"
+                    android:text="@string/report_per_area"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/btn_area_filter"
+                    style="@style/BlackBold14Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginRight="@dimen/space_24"
+                    android:drawableRight="@drawable/ic_filter"
+                    android:drawablePadding="@dimen/space_8"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    android:text="@{viewModel.areaFilterTitle}"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_brand_filter"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_report_per_area_title"
+                    tools:text="Jawa Barat" />
+
+                <TextView
+                    android:id="@+id/btn_brand_filter"
+                    style="@style/BlackBold14Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:layout_marginRight="@dimen/space_24"
+                    android:drawableRight="@drawable/ic_filter"
+                    android:drawablePadding="@dimen/space_8"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    android:text="@{viewModel.brandFilterTitle}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btn_area_filter"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_report_per_area_title"
+                    tools:text="ELITE" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_area_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/space_16"
+                    android:paddingRight="@dimen/space_16"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_brand_filter" />
+
+                <TextView
+                    android:id="@+id/tv_area_title"
+                    style="@style/BlackBold16Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:gravity="center"
+                    android:text="@{viewModel.selectedAreaReport.name}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_area_chart"
+                    tools:text="Jawa Barat" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_report_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:clipToPadding="true"
+                    android:paddingLeft="@dimen/space_16"
+                    android:paddingRight="@dimen/space_16"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_area_title" />
+
+                <TextView
+                    android:id="@+id/tv_statistic_title"
+                    style="@style/GreenBold14Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:text="@{viewModel.selectedReportGraphTitle}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_report_info"
+                    tools:text="Sales" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_6"
+                    android:layout_marginTop="@dimen/space_8"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_statistic_title"
+                    app:tabIndicator="@drawable/bg_indicator"
+                    app:tabIndicatorColor="@color/colorGreen"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabIndicatorHeight="@dimen/space_6" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vp_report"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_200"
+                    android:overScrollMode="never"
+                    android:scrollbarSize="@dimen/space_3"
+                    android:scrollbars="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/tab_layout"
+                    tools:layout_editor_absoluteX="0dp" />
+
+                <TextView
+                    android:id="@+id/tv_stock_title"
+                    style="@style/GreenBold14Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:text="@{viewModel.selectedStockReportGraphTitle}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vp_report"
+                    tools:text="Normal" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_stock"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_6"
+                    android:layout_marginTop="@dimen/space_8"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_stock_title"
+                    app:tabIndicator="@drawable/bg_indicator"
+                    app:tabIndicatorColor="@color/colorGreen"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabIndicatorHeight="@dimen/space_6" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vp_stock"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_400"
+                    android:overScrollMode="never"
+                    android:scrollbarSize="@dimen/space_3"
+                    android:scrollbars="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/tab_layout_stock"
+                    tools:layout_editor_absoluteX="0dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+</layout>

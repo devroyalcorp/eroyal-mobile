@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.report.ReportViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_daily_report_visit_title"
+            style="@style/BlackBold16Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_16"
+            android:gravity="center"
+            android:text="@string/daily_visit_report_my_team"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btn_area_filter"
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_8"
+            android:drawableRight="@drawable/ic_filter"
+            android:drawablePadding="@dimen/space_8"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="@{viewModel.areaDailyFilterTitle}"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_daily_report_visit_title"
+            app:layout_constraintRight_toLeftOf="@+id/btn_brand_filter"
+            app:layout_constraintTop_toBottomOf="@+id/tv_daily_report_visit_title"
+            tools:text="Jawa Barat" />
+
+        <TextView
+            android:id="@+id/btn_brand_filter"
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_8"
+            android:drawableRight="@drawable/ic_filter"
+            android:drawablePadding="@dimen/space_8"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="@{viewModel.brandDailyFilterTitle}"
+            app:layout_constraintLeft_toRightOf="@+id/btn_area_filter"
+            app:layout_constraintRight_toLeftOf="@+id/btn_date_filter"
+            app:layout_constraintTop_toBottomOf="@+id/tv_daily_report_visit_title"
+            tools:text="ELITE" />
+
+        <TextView
+            android:id="@+id/btn_date_filter"
+            style="@style/BlackBold14Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_32"
+            android:drawableRight="@drawable/ic_filter"
+            android:drawablePadding="@dimen/space_8"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text="@{viewModel.dateDailyFilterTitle}"
+            app:layout_constraintLeft_toRightOf="@+id/btn_brand_filter"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_daily_report_visit_title"
+            tools:text="23 Mar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_daily_report_visit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/space_16"
+            android:layout_marginRight="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_16"
+            android:visibility="@{viewModel.emptyDailyReportVisibility ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_area_filter" />
+
+        <TextView
+            android:id="@+id/tv_empty_report"
+            style="@style/BlackBold18Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_daily_report_yet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:visibility="@{viewModel.emptyDailyReportVisibility ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_area_filter" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

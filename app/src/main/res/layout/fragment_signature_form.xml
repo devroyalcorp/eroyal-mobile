@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.net.Uri"/>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.worka.eroyal.feature.tasks.TasksViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/space_24"
+            android:background="@color/white"
+            android:paddingRight="@dimen/space_24"
+            android:paddingBottom="@dimen/space_24">
+
+            <TextView
+                android:id="@+id/tv_its_been"
+                style="@style/BlackBold16Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_24"
+                android:text="@{viewModel.textTimer}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                app:layout_constraintTop_toBottomOf="@+id/tv_its_been">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_notes"
+                    style="@style/BlackBold14Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/notes"
+                    android:singleLine="false"
+                    android:maxLines="5"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:imeOptions="actionDone"
+                    android:text="@={viewModel.notes}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_label_add_photo"
+                style="@style/GreyBoldText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_24"
+                android:text="@string/add_photo"
+                app:layout_constraintTop_toBottomOf="@+id/til_notes" />
+
+            <RelativeLayout
+                android:id="@+id/layout_img_add_photo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/space_16"
+                android:background="@drawable/bg_border_radius"
+                app:layout_constraintDimensionRatio="16:6"
+                app:layout_constraintTop_toBottomOf="@id/tv_label_add_photo">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_image_visit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/space_8"
+                    android:paddingRight="@dimen/space_8"
+                    android:clipToPadding="true"
+                    android:overScrollMode="never"
+                    app:layout_constraintDimensionRatio="16:6" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_label_signature_"
+                style="@style/GreyBoldText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_24"
+                android:text="@string/add_clients_signature"
+                app:layout_constraintTop_toBottomOf="@+id/layout_img_add_photo" />
+
+            <RelativeLayout
+                android:id="@+id/layout_signature"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/space_16"
+                android:background="@drawable/bg_border_radius"
+                app:layout_constraintDimensionRatio="16:8"
+                app:layout_constraintTop_toBottomOf="@id/tv_label_signature_">
+
+                <com.github.gcacace.signaturepad.views.SignaturePad
+                    android:id="@+id/signature_pad"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/space_8"
+                    app:penColor="@android:color/black" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/btn_clear_signature"
+                style="@style/BlackBold12Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_12"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/clear_signature"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toLeftOf="@+id/layout_signature"
+                app:layout_constraintRight_toRightOf="@+id/layout_signature"
+                app:layout_constraintTop_toBottomOf="@+id/layout_signature" />
+
+            <Button
+                android:id="@+id/btn_next"
+                style="@style/ButtonWhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/space_48"
+                android:layout_marginBottom="@dimen/space_16"
+                android:background="@drawable/bg_button_green_rounded"
+                android:paddingLeft="@dimen/space_52"
+                android:paddingTop="@dimen/space_10"
+                android:paddingRight="@dimen/space_52"
+                android:paddingBottom="@dimen/space_10"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                android:enabled="@{viewModel.canNextSignature}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_clear_signature"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>

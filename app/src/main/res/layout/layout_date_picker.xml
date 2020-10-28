@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_green_radius">
+
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="@dimen/space_24"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/date_picker"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/space_8"
+            android:paddingBottom="@dimen/space_24">
+
+            <TextView
+                android:id="@+id/btn_cancel"
+                style="@style/WhiteBold16Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/space_16"
+                android:text="@android:string/cancel" />
+
+            <TextView
+                android:id="@+id/btn_ok"
+                style="@style/WhiteBold16Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/space_32"
+                android:text="@android:string/ok" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>
